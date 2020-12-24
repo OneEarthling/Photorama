@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ez-3K-5qR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="6ez-3K-5qR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,19 +19,32 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GGr-Qb-iDu">
                                 <rect key="frame" x="0.0" y="88" width="414" height="808"/>
                             </imageView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="foV-34-ty4">
+                                <rect key="frame" x="121.5" y="98" width="171" height="32"/>
+                                <segments>
+                                    <segment title="Interesting"/>
+                                    <segment title="Recent"/>
+                                </segments>
+                                <connections>
+                                    <action selector="switcherTapped:" destination="BYZ-38-t0r" eventType="valueChanged" id="XWk-kY-fRr"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="GGr-Qb-iDu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="GnB-bL-TXC"/>
                             <constraint firstAttribute="bottomMargin" secondItem="GGr-Qb-iDu" secondAttribute="bottom" id="Lsk-Ae-o3F"/>
+                            <constraint firstItem="foV-34-ty4" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="kay-a7-Oti"/>
                             <constraint firstItem="GGr-Qb-iDu" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="oSY-vP-ImO"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="GGr-Qb-iDu" secondAttribute="trailing" id="ulX-cK-NKz"/>
+                            <constraint firstItem="foV-34-ty4" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="zXq-Fg-wLC"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Photorama" id="5bP-La-rut"/>
                     <connections>
                         <outlet property="imageView" destination="GGr-Qb-iDu" id="C77-y2-5HD"/>
+                        <outlet property="segmentedControl" destination="foV-34-ty4" id="ZXa-5C-DD8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
