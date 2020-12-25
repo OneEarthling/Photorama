@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PhotosViewController: UIViewController, UICollectionViewDelegate {
+class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
 
     @IBOutlet var collectionView: UICollectionView!
     
@@ -20,6 +20,10 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         collectionView.dataSource = photoDataSource
         loadInterestingPhotos()
         collectionView.delegate = self
+        // bronze challenge
+        /*if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+            layout.scrollDirection = .horizontal
+        }*/
     }
     
     func loadInterestingPhotos(){
@@ -83,5 +87,11 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate {
         }
     }
     
+    // MARK:- UICollectionViewDelegateFlowLayout
+    //silver challenge
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = self.collectionView.bounds.width / 4 - 8
+        return CGSize(width: width, height: width)
+    }
 }
 
