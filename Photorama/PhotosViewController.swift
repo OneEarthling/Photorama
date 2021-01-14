@@ -18,8 +18,14 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
         super.viewDidLoad()
         
         collectionView.dataSource = photoDataSource
-        loadInterestingPhotos()
         collectionView.delegate = self
+        //loadInterestingPhotos()
+        updateDataSource()
+        store.fetchInterestingPhotos(completion: { (photosResult) -> Void in
+            self.updateDataSource()
+            
+        })
+        
         // bronze challenge
         /*if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
@@ -51,6 +57,18 @@ class PhotosViewController: UIViewController, UICollectionViewDelegate, UICollec
             case let .failure(error):
                 self.photoDataSource.photos.removeAll()
                 print("Error with photos \(error).")
+            }
+            self.collectionView.reloadSections(IndexSet(integer: 0))
+        }
+    }
+    
+    private func updateDataSource() {
+        store.fetchAllPhotos { (photosResult) in
+            switch photosResult {
+            case let .success(photos):
+                self.photoDataSource.photos = photos
+            case .failure:
+                self.photoDataSource.photos.removeAll()
             }
             self.collectionView.reloadSections(IndexSet(integer: 0))
         }
